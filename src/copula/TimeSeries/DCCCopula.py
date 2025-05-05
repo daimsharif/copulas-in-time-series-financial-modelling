@@ -10,12 +10,11 @@ Relative Path: src/copula/TimeSeries/DCCCopula.py
 
 from typing import Dict, Optional
 from matplotlib import pyplot as plt
-from matplotlib.pylab import norm
 import numpy as np
 import pandas as pd
 from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel
 from copula.TimeSeries.GARCHModel import GARCHModel
-from copula.TimeSeries.VineCopula import VineCopula
+
 
 class DCCCopula(FinancialCopulaModel):
     """
