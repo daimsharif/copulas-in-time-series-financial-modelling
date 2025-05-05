@@ -13,7 +13,6 @@ import seaborn as sns
 from scipy import stats
 
 # Import from general copula modules
-from copula.CopulaDistribution import CopulaDistribution
 from copula.CopulaModel import CopulaModel
 from copula.Marginal import Marginal
 from copula.DataAnalyzer import DataAnalyzer
