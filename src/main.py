@@ -26,6 +26,28 @@ from copula.TimeSeries.DCCCopula import DCCCopula
 from copula.TimeSeries.GARCHVineCopula import GARCHVineCopula
 
 
+def plot_initial_timeseries(returns_df: pd.DataFrame):
+    """
+    Plot the initial synthetic financial time series data as separate plots for each asset.
+
+    Args:
+        returns_df: DataFrame with financial time series data
+    """
+    n_assets = returns_df.shape[1]
+    plt.figure(figsize=(12, 3 * n_assets))
+
+    for i, col in enumerate(returns_df.columns, 1):
+        plt.subplot(n_assets, 1, i)
+        plt.plot(returns_df.index, returns_df[col], label=col, linewidth=1)
+        plt.title(f"{col} Returns")
+        plt.xlabel("Time Index")
+        plt.ylabel("Returns")
+        plt.grid(True, alpha=0.3)
+        plt.tight_layout()
+
+    plt.savefig("initial_timeseries_per_asset.png")
+    # plt.show()
+
 def create_random_dataset(n_samples: int = 2000) -> pd.DataFrame:
     """
     Create a random dataset with interesting dependence structures.
@@ -281,6 +303,9 @@ def combined_copula_analysis():
     print("\n\n===== PART 2: FINANCIAL TIME SERIES COPULA ANALYSIS =====")
     print("Generating synthetic financial time series data...")
     returns_df = generate_financial_timeseries(n_obs=1000, n_assets=4)
+
+    # ⬇️ Insert this here ⬇️
+    plot_initial_timeseries(returns_df)
 
     print("\nReturns Data Information:")
     print(f"Number of time periods: {len(returns_df)}")
