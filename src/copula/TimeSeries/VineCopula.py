@@ -10,11 +10,11 @@ Relative Path: src/copula/TimeSeries/VineCopula.py
 
 from typing import List
 
-from matplotlib.pylab import norm
+# from matplotlib.pylab import norm
 import numpy as np
 import pandas as pd
 from scipy import stats
-
+from scipy.stats import norm
 
 class VineCopula:
     """

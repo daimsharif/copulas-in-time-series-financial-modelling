@@ -10,7 +10,7 @@ Relative Path: src/copula/TimeSeries/GARCHVineCopula.py
 
 from typing import Dict
 from matplotlib import pyplot as plt
-from matplotlib.pylab import norm
+from scipy.stats import norm
 import numpy as np
 import pandas as pd
 from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel

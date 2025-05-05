@@ -13,7 +13,7 @@ from typing import Dict
 
 
 import pandas as pd
-from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel
+
 
 
 class FinancialCopulaModel(ABC):

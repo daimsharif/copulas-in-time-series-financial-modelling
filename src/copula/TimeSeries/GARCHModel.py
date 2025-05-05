@@ -13,7 +13,7 @@ from typing import Callable, Optional
 import numpy as np
 
 
-from copula.TimeSeries.GARCHModel import GARCHModel
+
 
 from scipy.optimize import minimize
 
@@ -88,7 +88,7 @@ class GARCHModel:
         # Optimize
         result = minimize(neg_log_likelihood,
                           initial_params,
-                          method=method,
+                          method="SLSQP",
                           constraints=constraints,
                           options={'maxiter': max_iter})
 

@@ -10,7 +10,7 @@ Relative Path: src/copula/TimeSeries/CoVaRCopula.py
 
 from typing import Dict, List
 from matplotlib import pyplot as plt
-from matplotlib.pylab import norm
+from scipy.stats import norm
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -138,8 +138,9 @@ class CoVaRCopula(FinancialCopulaModel):
                 y = u_data.iloc[:, j].values
 
                 # Lower tail dependence
-                cond_prob = np.mean(y <= threshold | x <=
-                                    threshold) / np.mean(x <= threshold)
+                cond_prob = np.mean(np.logical_or(
+                    y <= threshold, x <= threshold)) / np.mean(x <= threshold)
+
                 tail_dep[i, j] = cond_prob
 
         return tail_dep
