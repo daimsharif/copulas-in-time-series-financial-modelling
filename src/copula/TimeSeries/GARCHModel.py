@@ -1,3 +1,22 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: GARCHModel.py
+
+Relative Path: src/copula/TimeSeries/GARCHModel.py
+"""
+
+from typing import Callable, Optional
+
+import numpy as np
+
+
+from copula.TimeSeries.GARCHModel import GARCHModel
+
+from scipy.optimize import minimize
+
 class GARCHModel:
     """
     Simple GARCH(1,1) model implementation for volatility modeling.

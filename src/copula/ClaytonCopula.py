@@ -1,5 +1,15 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: ClaytonCopula.py
+
+Relative Path: src/copula/ClaytonCopula.py
+"""
+
 import numpy as np
-from sklearn.preprocessing import StandardScaler
+
 from typing import Dict
 
 from copula.CopulaDistribution import CopulaDistribution

@@ -1,3 +1,23 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: GARCHVineCopula.py
+
+Relative Path: src/copula/TimeSeries/GARCHVineCopula.py
+"""
+
+from typing import Dict
+from matplotlib import pyplot as plt
+from matplotlib.pylab import norm
+import numpy as np
+import pandas as pd
+from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel
+from copula.TimeSeries.GARCHModel import GARCHModel
+from copula.TimeSeries.VineCopula import VineCopula
+
+
 class GARCHVineCopula(FinancialCopulaModel):
     """
     GARCH-based Vine Copula model for capturing volatility and complex dependency

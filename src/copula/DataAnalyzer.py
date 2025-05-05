@@ -1,3 +1,13 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: DataAnalyzer.py
+
+Relative Path: src/copula/DataAnalyzer.py
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,7 +15,7 @@ import seaborn as sns
 from scipy import stats
 
 
-from typing import List, Tuple, Dict, Optional, Union
+from typing import Tuple, Dict
 
 
 class DataAnalyzer:

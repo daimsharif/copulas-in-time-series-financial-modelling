@@ -1,3 +1,20 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: gaussianCopula.py
+
+Relative Path: src/copula/gaussianCopula.py
+"""
+
+from typing import Dict
+
+from matplotlib.pylab import norm
+import numpy as np
+from copula.CopulaDistribution import CopulaDistribution
+
+
 class GaussianCopula(CopulaDistribution):
     """Gaussian copula implementation."""
 

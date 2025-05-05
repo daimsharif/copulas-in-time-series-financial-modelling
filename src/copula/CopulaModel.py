@@ -1,3 +1,12 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: CopulaModel.py
+
+Relative Path: src/copula/CopulaModel.py
+"""
 
 import pandas as pd
 

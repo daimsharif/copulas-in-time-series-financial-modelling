@@ -1,3 +1,13 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: Marginal.py
+
+Relative Path: src/copula/Marginal.py
+"""
+
 import numpy as np
 
 

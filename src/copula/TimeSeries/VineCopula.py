@@ -1,3 +1,21 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: VineCopula.py
+
+Relative Path: src/copula/TimeSeries/VineCopula.py
+"""
+
+from typing import List
+
+from matplotlib.pylab import norm
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+
 class VineCopula:
     """
     Simple implementation of a Vine Copula structure.

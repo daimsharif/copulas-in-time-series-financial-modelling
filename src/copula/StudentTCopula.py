@@ -1,3 +1,13 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: StudentTCopula.py
+
+Relative Path: src/copula/StudentTCopula.py
+"""
+
 from typing import Dict
 
 import numpy as np

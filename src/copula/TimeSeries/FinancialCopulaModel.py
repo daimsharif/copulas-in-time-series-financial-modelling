@@ -1,3 +1,20 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: FinancialCopulaModel.py
+
+Relative Path: src/copula/TimeSeries/FinancialCopulaModel.py
+"""
+
+from abc import ABC, abstractmethod
+from typing import Dict
+
+
+import pandas as pd
+from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel
+
 
 class FinancialCopulaModel(ABC):
     """

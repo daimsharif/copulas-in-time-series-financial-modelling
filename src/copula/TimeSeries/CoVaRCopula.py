@@ -1,3 +1,23 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: CoVaRCopula.py
+
+Relative Path: src/copula/TimeSeries/CoVaRCopula.py
+"""
+
+from typing import Dict, List
+from matplotlib import pyplot as plt
+from matplotlib.pylab import norm
+import numpy as np
+import pandas as pd
+from scipy import stats
+from scipy.stats import t
+from copula.TimeSeries.FinancialCopulaModel import FinancialCopulaModel
+from copula.TimeSeries.GARCHModel import GARCHModel
+
 class CoVaRCopula(FinancialCopulaModel):
     """
     Conditional Value-at-Risk (CoVaR) Copula model for capturing tail risk

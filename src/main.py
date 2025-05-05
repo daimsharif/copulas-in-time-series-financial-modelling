@@ -1,3 +1,13 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: main.py
+
+Relative Path: src/main.py
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

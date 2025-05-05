@@ -1,3 +1,13 @@
+"""
+Created on 05/05/2025
+
+@author: Aryan
+
+Filename: CopulaDistribution.py
+
+Relative Path: src/copula/CopulaDistribution.py
+"""
+
 from typing import Dict
 
 import numpy as np
