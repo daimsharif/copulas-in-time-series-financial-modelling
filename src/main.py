@@ -3,8 +3,11 @@ Created on 05/05/2025
 
 @author: Aryan
 
-Filename: combined_copula_script.py
+Filename: main.py
+
+Relative Path: src/main.py
 """
+
 
 import numpy as np
 import pandas as pd
