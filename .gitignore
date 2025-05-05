@@ -1,0 +1,8 @@
+
+src/copula/TimeSeries/__pycache__
+
+src/copula/__pycache__
+__pycache__/
+__pycache__/
+*.pyc
+
