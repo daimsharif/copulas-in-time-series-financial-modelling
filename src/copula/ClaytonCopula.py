@@ -24,26 +24,19 @@ class ClaytonCopula(CopulaDistribution):
 
     def simulate(self, n_samples: int, params: Dict) -> np.ndarray:
         """
-        Simulate samples from a bivariate Clayton copula.
-        
-        Args:
-            n_samples: Number of samples to generate
-            params: Dictionary containing 'theta' (dependence parameter)
-            
-        Returns:
-            Uniform samples from the Clayton copula
+        Simulate samples from a bivariate Clayton copula using inverse transform.
         """
-        theta = params.get('theta', 2.0)  # Default theta = 2.0
+        theta = params.get('theta', 2.0)  # Must be > 0
 
-        # Generate uniform random variables
-        v1 = np.random.uniform(0, 1, n_samples)
-        v2 = np.random.uniform(0, 1, n_samples)
+        if theta <= 0:
+            raise ValueError("Theta must be > 0 for Clayton copula.")
 
-        # Transform to Clayton copula
-        u1 = v1
-        if abs(theta) < 1e-10:  # Independent case
-            u2 = v2
-        else:
-            u2 = (1 - np.log(v2) / (v1**(-theta) * np.log(v1)))**(-1/theta)
+        # Step 1: Generate uniform U1 and independent W ~ Uniform[0, 1]
+        u1 = np.random.uniform(0, 1, n_samples)
+        w = np.random.uniform(0, 1, n_samples)
+
+        # Step 2: Use inverse transform formula for Clayton
+        u2 = (w**(-theta / (1 + theta)) * u1 **
+              (-theta) - 1 + u1**(-theta))**(-1/theta)
 
         return np.column_stack((u1, u2))
