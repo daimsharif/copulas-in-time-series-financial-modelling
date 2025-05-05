@@ -1,3 +1,14 @@
+from typing import Dict
+
+import numpy as np
+# from copula import CopulaDistribution
+from copula.CopulaDistribution import CopulaDistribution
+
+
+from scipy.stats import t
+
+
+
 class StudentTCopula(CopulaDistribution):
     """Student's t-copula implementation."""
 

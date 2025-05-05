@@ -1,3 +1,9 @@
+import numpy as np
+
+
+from typing import Dict
+
+
 class Marginal:
     """Class representing a marginal distribution."""
 

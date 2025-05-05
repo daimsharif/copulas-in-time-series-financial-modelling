@@ -1,3 +1,10 @@
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from typing import Dict
+
+from copula.CopulaDistribution import CopulaDistribution
+
+
 class ClaytonCopula(CopulaDistribution):
     """Clayton copula implementation (bivariate only)."""
 

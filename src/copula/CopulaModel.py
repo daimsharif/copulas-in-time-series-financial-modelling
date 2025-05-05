@@ -1,3 +1,11 @@
+
+import pandas as pd
+
+from typing import List,  Dict
+
+from copula.Marginal import Marginal
+from copula.CopulaDistribution import CopulaDistribution
+
 class CopulaModel:
     """Main class for copula-based modeling."""
 

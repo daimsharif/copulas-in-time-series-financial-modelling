@@ -3,10 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
-from scipy.stats import norm, skewnorm, t
-from sklearn.preprocessing import StandardScaler
-from typing import List, Tuple, Dict, Optional, Union
 
+
+from copula.CopulaDistribution import CopulaDistribution
+from copula.CopulaModel import CopulaModel
+from copula.Marginal import Marginal
+from copula.DataAnalyzer import DataAnalyzer
+from copula.StudentTCopula import StudentTCopula
+from copula.ClaytonCopula import ClaytonCopula
 
 
 # Example usage

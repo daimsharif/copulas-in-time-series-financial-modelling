@@ -1,3 +1,8 @@
+from typing import Dict
+
+import numpy as np
+
+
 class CopulaDistribution:
     """Base class for copula distributions."""
 

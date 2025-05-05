@@ -8,6 +8,8 @@ from scipy.stats import norm, t
 from typing import List, Tuple, Dict, Optional, Union, Callable
 from abc import ABC, abstractmethod
 
+from src.copula.TimeSeries import CoVaRCopula, DCCCopula, GARCHVineCopula
+
 
 
 
