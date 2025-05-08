@@ -1,39 +1,36 @@
 """
-Created on 05/05/2025
+Base class for copula distributions.
 
-@author: Aryan
-
-Filename: CopulaDistribution.py
-
-Relative Path: src/copula/CopulaDistribution.py
+Sub‑classes **must** implement `simulate`, returning uniform pseudo‑observations
+for an arbitrary (≥ 2) dimension.  Keep all heavy maths in the child class;
+this file is just the common skeleton.
 """
 
 from typing import Dict
-
 import numpy as np
 
 
 class CopulaDistribution:
-    """Base class for copula distributions."""
+    """Abstract copula distribution."""
 
     def __init__(self, name: str):
-        """
-        Initialize the copula distribution.
-        
-        Args:
-            name: Name of the copula distribution
-        """
         self.name = name
 
-    def simulate(self, n_samples: int, params: Dict) -> np.ndarray:
+    def simulate(self, n_samples: int, params: Dict) -> np.ndarray:  # noqa: D401
         """
-        Simulate samples from the copula.
-        
-        Args:
-            n_samples: Number of samples to generate
-            params: Parameters for the copula
-            
-        Returns:
-            Uniform samples from the copula
+        Generate observations from the copula.
+
+        Parameters
+        ----------
+        n_samples : int
+            Number of points to draw.
+        params : Dict
+            Implementation‑specific parameters – **must** include anything
+            the sub‑class needs (e.g. ‘theta’, correlation matrices, df, etc.).
+
+        Returns
+        -------
+        np.ndarray
+            Shape ``(n_samples, d)`` array of uniforms on (0, 1).
         """
-        raise NotImplementedError("Subclasses must implement this method")
+        raise NotImplementedError("Sub‑classes implement this.")

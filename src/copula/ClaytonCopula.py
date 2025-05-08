@@ -1,42 +1,57 @@
 """
-Created on 05/05/2025
+Multivariate Clayton copula.
 
-@author: Aryan
-
-Filename: ClaytonCopula.py
-
-Relative Path: src/copula/ClaytonCopula.py
+Implements the Marshall–Olkin construction so any dimension ≥ 2 is supported.
 """
 
-import numpy as np
-
 from typing import Dict
+import numpy as np
 
 from copula.CopulaDistribution import CopulaDistribution
 
 
 class ClaytonCopula(CopulaDistribution):
-    """Clayton copula implementation (bivariate only)."""
+    """Clayton copula for arbitrary dimension d ≥ 2."""
 
-    def __init__(self):
-        """Initialize a Clayton copula."""
+    def __init__(self) -> None:
         super().__init__(name="Clayton")
 
+    # ------------------------------------------------------------------ #
+    # Public API
+    # ------------------------------------------------------------------ #
     def simulate(self, n_samples: int, params: Dict) -> np.ndarray:
         """
-        Simulate samples from a bivariate Clayton copula using inverse transform.
+        Draw samples from a d‑dimensional Clayton copula.
+
+        Parameters
+        ----------
+        n_samples : int
+            Number of observations to generate.
+        params : Dict
+            *Required*  – ``theta``  (float > 0)  
+            *Optional*  – ``dimension``  (int ≥ 2, default 2).
+
+        Returns
+        -------
+        np.ndarray
+            ``(n_samples, dimension)`` array of uniforms.
         """
-        theta = params.get('theta', 2.0)  # Must be > 0
+        theta = params.get("theta", 2.0)
+        d = params.get("dimension", 2)
 
         if theta <= 0:
-            raise ValueError("Theta must be > 0 for Clayton copula.")
+            raise ValueError("θ must be > 0 for a Clayton copula.")
+        if d < 2:
+            raise ValueError("dimension must be at least 2.")
 
-        # Step 1: Generate uniform U1 and independent W ~ Uniform[0, 1]
-        u1 = np.random.uniform(0, 1, n_samples)
-        w = np.random.uniform(0, 1, n_samples)
+        # Marshall–Olkin algorithm
+        # 1. latent variable  W ~ Gamma(1/θ, 1)
+        w = np.random.gamma(shape=1.0 / theta, scale=1.0, size=n_samples)
 
-        # Step 2: Use inverse transform formula for Clayton
-        u2 = (w**(-theta / (1 + theta)) * u1 **
-              (-theta) - 1 + u1**(-theta))**(-1/theta)
+        # 2. independent uniforms
+        u = np.random.uniform(size=(n_samples, d))
 
-        return np.column_stack((u1, u2))
+        # 3. transform
+        x = (1.0 - np.log(u) / w[:, None]) ** (-1.0 / theta)
+
+        return x
