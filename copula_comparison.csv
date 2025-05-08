@@ -1,5 +1,0 @@
-Copula Family,Parameter (Theta),Selection Metric (AIC/BIC),Goodness-of-Fit Metric,Q‑Q Plot,Marginal Distribution,Distance/Rank Comparison,Status
-Gaussian Copula,,2001.98,0.0,qqplots/qq_gaussian_copula.png,Normal,0.03629147256363002,Success
-t‑Copula,,2005.5054529391318,-1.315587108891804,qqplots/qq_t‑copula.png,Student‑t,-0.08878903223323299,Success
-Clayton Copula,,,,Failed,Exponential,,"Failed: (slice(None, None, None), 0)"
-Gumbel Copula,,,,Failed,Gamma,,"Failed: (slice(None, None, None), 0)"
