@@ -12,7 +12,7 @@ import pandas as pd
 
 from typing import List,  Dict
 
-from copula.Marginal import Marginal
+from src.copula.Marginal import Marginal
 from copula.CopulaDistribution import CopulaDistribution
 
 class CopulaModel:

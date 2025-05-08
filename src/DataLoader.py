@@ -135,5 +135,5 @@ def load_returns_from_data_folder(
     plt.hist(returns_df.values.flatten(), bins=50, alpha=0.7)
 
     plt.title("Distribution of Log-Returns")
-    plt.show()
+    # plt.show()
     return returns_df
