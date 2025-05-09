@@ -1,84 +1,59 @@
 """
-Created on 05/08/2025
+Created on 05 / 05 / 2025
 
 @author: Aryan
-
-Filename: GumbelCopula.py
-
-Relative Path: src/copula/GumbelCopula.py
+Updated: 09 / 05 / 2025 – added CDF / PDF implementations
 """
 
-import numpy as np
-
 from typing import Dict
+
+import numpy as np
 
 from copula.CopulaDistribution import CopulaDistribution
 
 
 class GumbelCopula(CopulaDistribution):
-    """Gumbel copula implementation (bivariate only)."""
+    """Bivariate Gumbel copula."""
 
-    def __init__(self):
-        """Initialize a Gumbel copula."""
+    def __init__(self) -> None:
         super().__init__(name="Gumbel")
 
-    def simulate(self, n_samples: int, params: Dict) -> np.ndarray:
+    # ──────────────────────────────────────────────────────────────────────────
+    # Analytical functions
+    # ──────────────────────────────────────────────────────────────────────────
+    def cdf(self, u: np.ndarray, params: Dict) -> np.ndarray:
         """
-        Simulate samples from a bivariate Gumbel copula.
-        
-        Args:
-            n_samples: Number of samples to generate
-            params: Dictionary containing 'theta' parameter (must be >= 1)
-            
-        Returns:
-            Uniform samples from the Gumbel copula
-        """
-        theta = params.get('theta', 1.5)  # Must be >= 1
+        Gumbel copula CDF.
 
+        θ ≥ 1.
+
+        C(u,v) = exp{ −[(−ln u)^θ + (−ln v)^θ]^{1/θ} }
+        """
+        theta = params.get("theta", 2.0)
         if theta < 1:
-            raise ValueError("Theta must be >= 1 for Gumbel copula.")
+            raise ValueError("θ (theta) must be ≥ 1 for the Gumbel copula.")
 
-        # Generate stable random variable (V) with Laplace transform exp(-t^(1/theta))
-        v = self._generate_stable_variable(n_samples, theta)
+        u1, u2 = u[..., 0], u[..., 1]
+        a = (-np.log(u1)) ** theta
+        b = (-np.log(u2)) ** theta
+        return np.exp(-np.power(a + b, 1.0 / theta))
 
-        # Generate independent uniform variables
-        u1 = np.random.uniform(0, 1, n_samples)
-        u2 = np.random.uniform(0, 1, n_samples)
-
-        # Transform to Gumbel copula using conditional distribution method
-        t1 = -np.log(u1)
-        t2 = -np.log(u2)
-
-        # Create Gumbel copula using the Marshall-Olkin algorithm
-        e1 = -np.log(u1) / v
-        e2 = -np.log(u2) / v
-
-        # Transform back to uniform
-        u1_final = np.exp(-e1)
-        u2_final = np.exp(-e2)
-
-        return np.column_stack((u1_final, u2_final))
-
-    def _generate_stable_variable(self, n_samples: int, theta: float) -> np.ndarray:
+    def pdf(self, u: np.ndarray, params: Dict) -> np.ndarray:
         """
-        Generate stable random variable for Gumbel copula.
-        
-        Args:
-            n_samples: Number of samples
-            theta: Gumbel copula parameter
-            
-        Returns:
-            Samples from stable distribution
+        Gumbel copula PDF.
+
+        c(u,v) = C(u,v) · [ (−ln u·−ln v)^{θ−1} ·
+                  {1 + (θ−1)( (−ln u)^θ + (−ln v)^θ )^{1/θ} } ] / (u v)
         """
-        # Parameter for stable distribution
-        alpha = 1.0 / theta
+        theta = params.get("theta", 2.0)
+        if theta < 1:
+            raise ValueError("θ (theta) must be ≥ 1 for the Gumbel copula.")
 
-        # Generate uniform random variables
-        u = np.random.uniform(0, 1, n_samples) * np.pi - np.pi/2
-        w = np.random.exponential(1, n_samples)
+        u1, u2 = u[..., 0], u[..., 1]
+        ln_u1, ln_u2 = -np.log(u1), -np.log(u2)
+        S = (ln_u1 ** theta + ln_u2 ** theta) ** (1.0 / theta)
 
-        # Use Chambers-Mallows-Stuck method to generate stable random variable
-        gamma = np.cos(u) ** (-theta)
-        s = (np.sin(theta * u) / np.sin(u)) ** theta
-
-        return s / gamma * (np.cos(u * (1-theta)) / w) ** ((1-theta)/theta)
+        C = np.exp(-S)
+        part1 = (ln_u1 * ln_u2) ** (theta - 1)
+        part2 = 1.0 + (theta - 1.0) * S
+        return C * part1 * part2 / (u1 * u2)
