@@ -1,9 +1,15 @@
 # Copula-Based Financial Risk Analysis
 
-This project simulates, analyzes, and visualizes multivariate dependencies and systemic risk in financial time series using **copula models** — both general and time-series-based. It is built using synthetic data to model realistic behaviors like volatility clustering, tail dependence, and stress scenarios. The summary report of our findings is in the **Copula Analysis of Risk.pdf** file
+This project simulates, analyzes, and visualizes multivariate dependencies and systemic risk in financial time series using **copula models** — both general and time-series-based. It is built using synthetic data to model realistic behaviors like volatility clustering, tail dependence, and stress scenarios. 
 
 ---
+## 📄 Full Report
 
+View the summary report of our findings :
+
+👉 [Copula Analysis of Risk.pdf](./Copula Analysis of Risk.pdf)
+
+---
 ## 📁 Directory Structure
 
 ```
@@ -101,8 +107,4 @@ pip install numpy pandas matplotlib seaborn scipy
 * Random seed is set for reproducibility.
 * Works entirely on **synthetic data** — no financial data is required.
 
----
-
-## 📧 Author
-**Aryan**
 
