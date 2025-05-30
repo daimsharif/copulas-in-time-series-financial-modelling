@@ -7,7 +7,7 @@ This project simulates, analyzes, and visualizes multivariate dependencies and s
 
 View the summary report of our findings :
 
-👉 [Copula_Analysis_of_Risk.pdf](./Copula_Analysis_of_Risk.pdf)
+👉 [arxiv.org/abs/2505.06950](./Copula_Analysis_of_Risk.pdf)
 
 ---
 ## 📁 Directory Structure
